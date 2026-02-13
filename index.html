@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💘 ULTIMATE PIXEL LOVE MACHINE 2000 💘</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 25%, #ff69b4 50%, #ff1493 75%, #ff69b4 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating hearts background */
+        .heart-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.4;
+            animation: float 10s infinite ease-in;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px;
+            border: 12px solid #ff1493;
+            box-shadow: 0 0 50px rgba(255, 20, 147, 0.7), inset 0 0 50px rgba(255, 105, 180, 0.2);
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .container::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #ffe4f0;
+            border: 3px solid #ff1493;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: #ff1493;
+            border: 2px solid #c71585;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* TITLE SCREEN */
+        .title-screen {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #ff1493;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0px #ffb6d9, 8px 8px 0px #ff69b4;
+            letter-spacing: 3px;
+            animation: titleBounce 0.6s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .subtitle {
+            font-size: 8px;
+            color: #c71585;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+            animation: slideInLeft 0.6s ease-out backwards;
+        }
+
+        .input-group:nth-child(2) { animation-delay: 0.1s; }
+        .input-group:nth-child(3) { animation-delay: 0.2s; }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        label {
+            display: block;
+            font-size: 10px;
+            color: #ff1493;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            border: 4px solid #ff1493;
+            background: #ffe4f0;
+            color: #ff1493;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]::placeholder {
+            color: #ffb6d9;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            background: #fff;
+            transform: scale(1.02);
+        }
+
+        .button {
+            width: 100%;
+            padding: 18px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 11px;
+            background: #ff1493;
+            color: white;
+            border: 4px solid #c71585;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+            box-shadow: 5px 5px 0px #c71585;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0px #c71585;
+            background: #ff69b4;
+        }
+
+        .button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #c71585;
+        }
+
+        .button.small {
+            width: auto;
+            padding: 10px 20px;
+            font-size: 8px;
+            margin: 10px 5px;
+        }
+
+        /* LOVE METER SCREEN */
+        .meter-container {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .meter-label {
+            font-size: 12px;
+            color: #ff1493;
+            margin-bottom: 20px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 60px;
+            background: #ffe4f0;
+            border: 4px solid #ff1493;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff69b4, #ff1493, #c71585);
+            width: 0%;
+            animation: fillMeter 3s ease-out forwards;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        @keyframes fillMeter {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .meter-text {
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .love-percentage {
+            font-size: 24px;
+            color: #ff1493;
+            margin: 20px 0;
+            animation: scaleIn 0.5s ease-out 2.5s both;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .love-destiny {
+            font-size: 9px;
+            color: #c71585;
+            margin: 30px 0;
+            line-height: 1.8;
+            padding: 20px;
+            background: #fff5fa;
+            border: 3px dashed #ff69b4;
+            min-height: 80px;
+        }
+
+        /* MINI GAME */
+        .game-container {
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 14px;
+            color: #ff1493;
+            margin-bottom: 30px;
+            animation: titleBounce 0.6s ease-in-out infinite;
+        }
+
+        .click-zone {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border: 6px solid #c71585;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.1s;
+            font-size: 60px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+        }
+
+        .click-zone:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 20, 147, 0.8);
+        }
+
+        .click-zone:active {
+            transform: scale(0.95);
+        }
+
+        .click-counter {
+            font-size: 16px;
+            color: #ff1493;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #ffe4f0;
+            border: 3px solid #ff1493;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #ff1493;
+            width: 0%;
+            transition: width 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* RESULT SCREEN */
+        .result-screen {
+            text-align: center;
+            animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.2) rotate(-20deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .photo-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .photo-frame {
+            width: 180px;
+            height: 180px;
+            border: 8px solid #ff1493;
+            background: #ffe4f0;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            animation: photoFloat 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0) rotateZ(0deg); }
+            50% { transform: translateY(-15px) rotateZ(2deg); }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+
+        .pixel-hearts {
+            font-size: 50px;
+            margin: 30px 0;
+            letter-spacing: 15px;
+            animation: heartSpin 2s linear infinite;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        @keyframes heartSpin {
+            0% { transform: rotateY(0deg) scale(1); }
+            50% { transform: rotateY(180deg) scale(1.2); }
+            100% { transform: rotateY(360deg) scale(1); }
+        }
+
+        .name-display {
+            font-size: 22px;
+            color: #ff1493;
+            margin: 25px 0;
+            text-shadow: 3px 3px 0px #ffb6d9;
+            letter-spacing: 3px;
+            animation: nameGlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% { text-shadow: 3px 3px 0px #ffb6d9; }
+            50% { text-shadow: 0px 0px 20px #ff1493; }
+        }
+
+        .love-score {
+            font-size: 16px;
+            color: #ff1493;
+            margin: 20px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff5fa, #ffe4f0);
+            border: 4px solid #ff69b4;
+            animation: scoreReveal 0.8s ease-out;
+        }
+
+        @keyframes scoreReveal {
+            from { transform: scaleX(0); opacity: 0; }
+            to { transform: scaleX(1); opacity: 1; }
+        }
+
+        .fate-message {
+            font-size: 9px;
+            color: #c71585;
+            margin: 30px 0;
+            line-height: 2;
+            padding: 25px;
+            background: #fff5fa;
+            border: 3px dashed #ff1493;
+            min-height: 100px;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkleFloat 1.5s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes sparkleFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        .confetti-piece {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(800px) rotateZ(720deg); opacity: 0; }
+        }
+
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #cardToCapture {
+            background: white;
+            padding: 40px;
+            border: 12px solid #ff1493;
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 600px;
+            text-align: center;
+        }
+
+        #cardToCapture .photo-frame {
+            animation: none !important;
+        }
+
+        #cardToCapture .pixel-hearts {
+            animation: none !important;
+        }
+
+        #cardToCapture .name-display {
+            animation: none !important;
+        }
+
+        #cardToCapture .love-score {
+            animation: none !important;
+        }
+
+        .error-message {
+            color: #ff1493;
+            font-size: 10px;
+            padding: 15px;
+            background: #ffe4f0;
+            border: 3px solid #ff1493;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .loading {
+            display: inline-block;
+            font-size: 20px;
+            animation: rotate 1s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .title { font-size: 14px; }
+            .container { padding: 25px; }
+            .photo-frame { width: 120px; height: 120px; }
+            .pixel-hearts { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-rain" id="heartRain"></div>
+
+    <div class="container">
+        <!-- TITLE SCREEN -->
+        <div class="screen active title-screen" id="titleScreen">
+            <h1 class="title">💘 PIXEL LOVE 💘</h1>
+            <p class="subtitle">MACHINE 2000™</p>
+            <p style="font-size: 8px; color: #c71585; margin-bottom: 30px; letter-spacing: 1px;">
+                UNLOCK YOUR DESTINY<br>
+                IN PIXEL FORM
+            </p>
+
+            <div class="input-group">
+                <label for="nameInput">⬇️ YOUR NAME ⬇️</label>
+                <input type="text" id="nameInput" placeholder="e.g., CUPID" />
+            </div>
+
+            <div class="input-group">
+                <label for="photoInput">⬇️ YOUR PHOTO ⬇️</label>
+                <input type="file" id="photoInput" accept="image/*" />
+            </div>
+
+            <div id="errorMsg"></div>
+
+            <button class="button" onclick="goToLoveMeter()">→ SCAN LOVE LEVELS →</button>
+        </div>
+
+        <!-- LOVE METER SCREEN -->
+        <div class="screen" id="loveScreen">
+            <h2 style="font-size: 14px; color: #ff1493; margin-bottom: 30px; text-align: center;">LOVE METER ACTIVATED</h2>
+
+            <div class="meter-container">
+                <div class="meter-label">SCANNING YOUR LOVE POTENTIAL...</div>
+                <div class="love-meter">
+                    <div class="meter-fill" id="meterFill">
+                        <span class="meter-text">❤️ LOADING ❤️</span>
+                    </div>
+                </div>
+
+                <div class="love-percentage" id="lovePercentage">000%</div>
+
+                <div class="love-destiny" id="loveDestiny">
+                    Analyzing your romantic frequency...
+                </div>
+
+                <button class="button" onclick="goToGame()">→ PROVE YOUR LOVE →</button>
+                <button class="button small" onclick="goBack()">← BACK</button>
+            </div>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div class="screen" id="gameScreen">
+            <h2 class="game-title">SMASH THE HEART!</h2>
+            <p style="font-size: 8px; color: #c71585; margin-bottom: 20px;">Click 20 times to show your love!</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+
+            <div class="click-zone" id="clickZone" onclick="clickHeart()">💗</div>
+
+            <div class="click-counter">
+                SMASHES: <span id="clickCount">0</span>/20
+            </div>
+
+            <p style="font-size: 8px; color: #ff69b4; margin-top: 30px;">FASTER = STRONGER LOVE ⚡</p>
+
+            <button class="button small" onclick="goBack()" style="width: auto;">← SKIP TO RESULTS</button>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div class="screen result-screen" id="resultScreen">
+            <div style="margin-bottom: 20px;">
+                <h2 style="font-size: 14px; color: #ff1493; margin-bottom: 20px;">⭐ YOUR LOVE PROFILE ⭐</h2>
+            </div>
+
+            <div class="photo-container">
+                <div class="photo-frame">
+                    <img id="resultPhoto" src="" alt="Love Photo" />
+                </div>
+            </div>
+
+            <div class="pixel-hearts">
+                <span>💕</span>
+                <span>💖</span>
+                <span>💗</span>
+            </div>
+
+            <div class="name-display" id="resultName"></div>
+
+            <div class="love-score" id="finalScore"></div>
+
+            <div class="fate-message" id="fateMessage"></div>
+
+            <div style="font-size: 10px; color: #c71585; margin: 20px 0; font-style: italic;">
+                "Statistics prove it" - Nobody, ever
+            </div>
+
+            <div class="button-group">
+                <button class="button small" onclick="shareYourLove()">📤 SHARE YOUR LOVE</button>
+                <button class="button small" onclick="startOver()">🔄 TRY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userData = {};
+        let clickCount = 0;
+
+        // Generate floating hearts
+        function generateHearts() {
+            const heartRain = document.getElementById('heartRain');
+            const hearts = ['❤️', '💕', '💖', '💗', '💘', '🎀', '💞'];
+            
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = (Math.random() * 6 + 10) + 's';
+                heartRain.appendChild(heart);
+            }
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            document.querySelector('.container').scrollTop = 0;
+        }
+
+        function goToLoveMeter() {
+            const name = document.getElementById('nameInput').value.trim();
+            const photo = document.getElementById('photoInput').files[0];
+            const errorMsg = document.getElementById('errorMsg');
+
+            errorMsg.innerHTML = '';
+
+            if (!name) {
+                errorMsg.innerHTML = '<div class="error-message">ENTER YOUR NAME, YOU ROMANTIC DUMMY! 💔</div>';
+                return;
+            }
+
+            if (!photo) {
+                errorMsg.innerHTML = '<div class="error-message">WHERE\'S YOUR PHOTO?? 📸 UPLOAD IT!</div>';
+                return;
+            }
+
+            userData.name = name;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                userData.photo = e.target.result;
+                showScreen('loveScreen');
+                startLoveMeter();
+            };
+            reader.readAsDataURL(photo);
+        }
+
+        function startLoveMeter() {
+            const lovePercentage = Math.floor(Math.random() * 40) + 60;
+            setTimeout(() => {
+                document.getElementById('meterFill').style.width = '100%';
+                document.getElementById('lovePercentage').textContent = lovePercentage + '%';
+                generateLoveDestiny(lovePercentage);
+            }, 500);
+        }
+
+        function generateLoveDestiny(percentage) {
+            const destinies = [
+                `YOUR LOVE FREQUENCY IS ${percentage}% COMPATIBLE WITH THE UNIVERSE! THE COSMOS APPROVES! 🌟`,
+                `${percentage}% PURE LOVE ENERGY DETECTED! YOU ARE A ROMANTIC WARRIOR! ⚔️❤️`,
+                `ANALYSIS COMPLETE: YOUR HEART IS ${percentage}% PIXELATED AND BEAUTIFUL! 🎮💕`,
+                `DESTINY SAYS: ${percentage}% CHANCE OF TRUE PIXEL LOVE! THE NUMBERS DON'T LIE!`,
+                `YOUR ROMANTIC POTENTIAL: ${percentage}%! YOU ARE DANGEROUSLY IN LOVE! 🚨💘`,
+            ];
+            document.getElementById('loveDestiny').textContent = destinies[Math.floor(Math.random() * destinies.length)];
+        }
+
+        function goToGame() {
+            clickCount = 0;
+            document.getElementById('clickCount').textContent = '0';
+            document.getElementById('progressFill').style.width = '0%';
+            showScreen('gameScreen');
+        }
+
+        function clickHeart() {
+            if (clickCount < 20) {
+                clickCount++;
+                document.getElementById('clickCount').textContent = clickCount;
+                const progress = (clickCount / 20) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressFill').textContent = Math.floor(progress) + '%';
+
+                if (clickCount === 20) {
+                    setTimeout(goToResults, 500);
+                }
+
+                // Sparkle effect
+                createSparkle(event);
+            }
+        }
+
+        function createSparkle(event) {
+            const sparkles = ['✨', '💫', '⭐', '🌟'];
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+            sparkle.style.left = event.clientX + 'px';
+            sparkle.style.top = event.clientY + 'px';
+            sparkle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
+            sparkle.style.setProperty('--ty', (Math.random() - 0.5) * 100 - 50 + 'px');
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }
+
+        function goToResults() {
+            document.getElementById('resultPhoto').src = userData.photo;
+            document.getElementById('resultName').textContent = userData.name.toUpperCase();
+
+            const gameScore = Math.floor(clickCount * 5);
+            const finalScore = gameScore + Math.floor(Math.random() * 30);
+
+            const finalMessages = [
+                `YOUR LOVE SCORE: ${finalScore}/100 💕 YOU ARE CERTIFIED PIXEL-ROMANTIC!`,
+                `LOVE LEVEL ACHIEVED: ${finalScore}% 🎮 THE MACHINE APPROVES!`,
+                `ROMANTIC POWER: ${finalScore} UNITS! YOU BROKE THE LOVE SCALE!`,
+                `FINAL VERDICT: ${finalScore} PIXELS OF PURE LOVE! ✨`,
+            ];
+
+            document.getElementById('finalScore').textContent = finalMessages[Math.floor(Math.random() * finalMessages.length)];
+
+            const fateMessages = [
+                `THE PIXEL GODS HAVE SPOKEN: Your heart beats in 8-bit harmony. You are destined for cartoonish romance! 🎮💕`,
+                `DESTINY REVEALED: You have been chosen by Cupid's computer. Your love shall be legendary! 🏆`,
+                `THE PROPHECY SAYS: A pixelated soulmate awaits you. The algorithm has decided! 🤖❤️`,
+                `FATE DECREES: Your love is too powerful for analog measurement. You are PEAK ROMANCE! 📈💘`,
+                `THE COSMOS WHISPERS: Love at ${Math.floor(Math.random() * 30 + 70)}% brightness with maximum saturation!`,
+            ];
+
+            document.getElementById('fateMessage').textContent = fateMessages[Math.floor(Math.random() * fateMessages.length)];
+
+            showScreen('resultScreen');
+            triggerConfetti();
+        }
+
+        function triggerConfetti() {
+            const confettiEmojis = ['💕', '💖', '💗', '💘', '🎀', '✨', '⭐'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti-piece';
+                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-20px';
+                confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s ease-in forwards`;
+                document.body.appendChild(confetti);
+            }
+
+            // Add keyframes
+            if (!document.getElementById('confettiStyle')) {
+                const style = document.createElement('style');
+                style.id = 'confettiStyle';
+                style.textContent = `
+                    @keyframes confettiFall {
+                        to { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function goBack() {
+            showScreen('loveScreen');
+        }
+
+        function shareYourLove() {
+            // Create a temporary card for capture
+            const cardDiv = document.createElement('div');
+            cardDiv.id = 'cardToCapture';
+            cardDiv.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <h2 style="font-size: 14px; color: #ff1493; margin-bottom: 20px; text-shadow: 3px 3px 0px #ffb6d9;">⭐ YOUR LOVE PROFILE ⭐</h2>
+                </div>
+
+                <div class="photo-frame" style="width: 180px; height: 180px; border: 8px solid #ff1493; background: #ffe4f0; margin: 0 auto; box-shadow: 0 0 30px rgba(255, 20, 147, 0.5); overflow: hidden;">
+                    <img src="${userData.photo}" alt="Love Photo" style="width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated;" />
+                </div>
+
+                <div class="pixel-hearts" style="font-size: 50px; margin: 30px 0; letter-spacing: 15px; display: flex; justify-content: center; gap: 15px;">
+                    <span>💕</span>
+                    <span>💖</span>
+                    <span>💗</span>
+                </div>
+
+                <div class="name-display" style="font-size: 22px; color: #ff1493; margin: 25px 0; text-shadow: 3px 3px 0px #ffb6d9; letter-spacing: 3px;">${userData.name.toUpperCase()}</div>
+
+                <div class="love-score" style="font-size: 16px; color: #ff1493; margin: 20px 0; padding: 20px; background: linear-gradient(135deg, #fff5fa, #ffe4f0); border: 4px solid #ff69b4;">
+                    ${document.getElementById('finalScore').textContent}
+                </div>
+
+                <div style="font-size: 9px; color: #c71585; margin: 30px 0; line-height: 2; padding: 25px; background: #fff5fa; border: 3px dashed #ff1493;">
+                    ${document.getElementById('fateMessage').textContent}
+                </div>
+
+                <div style="font-size: 10px; color: #c71585; margin: 20px 0; font-style: italic;">
+                    "Statistics prove it" - Nobody, ever
+                </div>
+            `;
+            document.body.appendChild(cardDiv);
+
+            // Use html2canvas to capture the card
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+            script.onload = function() {
+                html2canvas(cardDiv, {
+                    backgroundColor: '#ffffff',
+                    scale: 2,
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = `${userData.name.toUpperCase()}_PIXEL_LOVE_${new Date().getTime()}.png`;
+                    link.click();
+                    cardDiv.remove();
+                    alert(`YOUR LOVE CARD HAS BEEN DOWNLOADED!\n\n${userData.name.toUpperCase()} IS NOW IMMORTALIZED! 🖼️💕`);
+                }).catch(err => {
+                    cardDiv.remove();
+                    alert(`LOVE CARD CAPTURED!\n\n${userData.name.toUpperCase()} IS OFFICIALLY A PIXEL ROMANTIC!\n\nTELL THE WORLD! 📢💕`);
+                });
+            };
+            document.head.appendChild(script);
+        }
+
+        function startOver() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('photoInput').value = '';
+            userData = {};
+            clickCount = 0;
+            showScreen('titleScreen');
+        }
+
+        // Initialize
+        generateHearts();
+
+        // Add confetti keyframes to head
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
